@@ -10,12 +10,20 @@ Categories.allow({
 
 if(Meteor.isServer){
    Meteor.methods({
-     addCollection: function(collectionAttributes){
-       var category = _.extend(accountAttributes, {
+     addCategory: function(collectionAttributes){
+       var category = _.extend(collectionAttributes, {
           uId:Meteor.userId(),
           date: new Date()
        });
        Categories.insert(category);
+     },
+
+     removeCategory: function(id){
+       Categories.remove({_id: id});
+     },
+
+     editCategory: function(id, collectionAttributes){
+       Categories.update({uId:Meteor.userId(), _id: id}, {$set: collectionAttributes});
      }
    });
 }

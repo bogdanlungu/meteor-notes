@@ -1,0 +1,115 @@
+Meteor.subscribe('categories');
+
+Template.categories.helpers({
+  categories: function(){
+    return Categories.find({});
+  },
+
+  numberOfCategories: function(){
+    return Categories.find({}).count();
+  }
+});
+
+Template.categories.events({
+  'click .add': function(e){
+    e.preventDefault();
+    var categoryName = $('#category').val();
+    if(categoryName.length > 3){
+      var category = {};
+      category.title = categoryName;
+      Meteor.call("addCategory", category, function(error, result){
+        if(error){
+           alert(error);
+           $('.alert-warning').show("slow");
+           Meteor.setTimeout(function(){
+             $('.alert-warning').hide("slow");
+           }, 4000);
+        }else{
+           $('.alert-success').show("slow");
+           $('#category').val("");
+           Meteor.setTimeout(function(){
+             $('.alert-success').hide("slow");
+           }, 4000);
+        }
+      });
+    }else{
+      alert("Please add a category name!");
+    }
+  },
+
+  'click .close': function(e){
+    e.preventDefault();
+    $('.alert-success').hide("slow");
+    $('.alert-warning').hide("slow");
+  },
+
+  'click .delete': function(e){
+    e.preventDefault();
+    var categoryId = e.currentTarget.id;
+    Session.set("categoryId", categoryId);
+    Modal.show('deleteCategory');
+  },
+
+  'click .edit': function(e){
+    e.preventDefault();
+    var categoryId = e.currentTarget.id;
+    Session.set("categoryId", categoryId);
+    Modal.show('editCategory');
+  }
+});
+
+Template.deleteCategory.helpers({
+  category: function(){
+    if(Session.get("categoryId")){
+      return Categories.findOne({_id: Session.get("categoryId")});
+    }else{
+      return "Error!";
+    }
+  }
+});
+
+Template.deleteCategory.events({
+  'click .deleteConfirm': function(e){
+    e.preventDefault();
+    if(Session.get("categoryId")){
+      Modal.hide();
+      var theCategoryId = Session.get("categoryId");
+      Meteor.call("removeCategory", theCategoryId, function(error, result){
+        if(error){
+          alert(error);
+        }else{
+          // the category will dissapear
+        }
+      });
+    }else{
+      alert("Error");
+    }
+  }
+});
+
+Template.editCategory.helpers({
+  category: function(){
+    if(Session.get("categoryId")){
+      return Categories.findOne({_id: Session.get("categoryId")});
+    }else{
+      return "Error!";
+    }
+  }
+});
+
+Template.editCategory.events({
+  'click .save': function(e){
+    e.preventDefault();
+    var categoryId = e.currentTarget.id;
+    var category = {};
+    category.title = $('#title').val();
+    Meteor.call("editCategory", categoryId, category, function(error, result){
+      if(error){
+        alert(error);
+      }else{
+        // the category will change its title
+      }
+    });
+  Modal.hide();
+  }
+});

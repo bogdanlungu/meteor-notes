@@ -1,0 +1,82 @@
+<template name="categories">
+  <div class="row">
+      <div class="col-md-12">
+        {{#if numberOfCategories}}
+          {{#each categories}}
+            <h2>
+              <div class="btn-group" role="group">
+               <button type="button" class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 <span class="caret"></span>
+               </button>
+               <ul class="dropdown-menu">
+                <li><a href="#" class="edit" id="{{_id}}">Edit</a></li>
+                <li><a href="#" class="delete" id="{{_id}}">Delete</a></li>
+               </ul>
+              </div>
+              {{title}}</h2>
+          {{/each}}
+        {{else}}
+          <h2>Sorry, there are no categories saved.</h2>
+        {{/if}}
+        <div class="alert alert-success">
+          <a href="#" class="close">&times;</a>
+          <strong>Done!</strong> The category was saved.
+        </div>
+
+        <div class="alert alert-warning">
+          <a href="#" class="close">&times;</a>
+          <strong>Warning!</strong> The category could not be saved.
+        </div>
+        <form class="form-inline theForm">
+          <div class="form-group">
+            <input type="text" class="form-control" id="category" placeholder="Category name">
+            <button type="button" class="btn btn-info add">Add category</button>
+          </div>
+        </form>
+      </div>
+  </div>
+</template>
+
+<template name="deleteCategory">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Are you sure you want to delete the category: {{category.title}}?</h4>
+      </div>
+      <div class="modal-body">
+        <p>All the notes saved to this category will be removed.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger deleteConfirm">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+</template>
+
+<template name="editCategory">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit the category</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-inline theForm">
+          <div class="form-group">
+            <input type="text" class="form-control" id="title" value="{{category.title}}" placeholder="Category name">
+            <button type="button" class="btn btn-info save" id="{{category._id}}">Save</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+</template>
