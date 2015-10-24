@@ -1,0 +1,13 @@
+<template name="welcome">
+  <div class="row">
+      <div class="col-md-12">
+        <h2>Welcome</h2>
+              {{#if loggedIn}}
+                 {{redirectToListings}}
+                 Just choose an option from the top menu.
+              {{ else }}
+                 Please log in and then select an action from the top menu.
+              {{/if}}
+      </div>
+  </div>
+</template>
