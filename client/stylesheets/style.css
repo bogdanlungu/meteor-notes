@@ -13,3 +13,11 @@
 .theForm{
   margin-top: 30px;
 }
+
+.noteTitle{
+  min-width: 400px;
+}
+
+.notes{
+  margin-left: 40px;
+}

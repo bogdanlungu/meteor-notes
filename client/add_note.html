@@ -1,0 +1,27 @@
+<template name="addNote">
+  <div class="row">
+      <div class="col-md-12">
+        <h2>Add note</h2>
+
+        <form class="form-inline theForm">
+          <div class="form-group">
+            <input type="text" class="form-control noteTitle" id="title" placeholder="Note title">
+          </div>
+          <hr>
+          <div class="form-group">
+              <select class="form-control" id="category">
+                <option value="0">Select a category</option>
+                {{#each categories}}
+                  <option value="{{_id}}">{{title}}</option>
+                {{/each}}
+              </select>
+          </div>
+          <hr>
+          <div id="summernote"></div>
+          <hr>
+          <button type="button" class="btn btn-info create">Create note</button>
+        </form>
+
+      </div>
+  </div>
+</template>

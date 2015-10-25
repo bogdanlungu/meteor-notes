@@ -1,4 +1,4 @@
-Meteor.subscribe('categories');
+Meteor.subscribe('categories', 'notes');
 
 Template.categories.helpers({
   categories: function(){
@@ -7,6 +7,14 @@ Template.categories.helpers({
 
   numberOfCategories: function(){
     return Categories.find({}).count();
+  },
+
+  notes: function(){
+    return Notes.find({category: this._id});
+  },
+
+  categoryId: function(){
+    return this._id;
   }
 });
 
@@ -55,7 +63,19 @@ Template.categories.events({
     var categoryId = e.currentTarget.id;
     Session.set("categoryId", categoryId);
     Modal.show('editCategory');
+  },
+
+  'click .get': function(e){
+    e.preventDefault();
+    var theEditorContent = $('#summernote').code();
+    alert(theEditorContent);
   }
+});
+
+Template.categories.onRendered(function(){
+  $(document).ready(function() {
+    $('#summernote').summernote();
+  });
 });
 
 Template.deleteCategory.helpers({

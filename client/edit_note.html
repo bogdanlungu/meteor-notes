@@ -1,0 +1,40 @@
+<template name="editNote">
+  <div class="row">
+      <div class="col-md-12">
+        <h2>Edit note</h2>
+
+        <form class="form-inline theForm">
+          <div class="form-group">
+            <input type="text" class="form-control noteTitle" id="title" value="{{note.title}}" placeholder="Note title">
+          </div>
+          <hr>
+          <div class="form-group">
+              <select class="form-control" id="category">
+                <option value="0">Select a category</option>
+                {{#each categories}}
+                  {{#if checkCategory}}
+                    <option value="{{_id}}" selected>{{title}}</option>
+                  {{else}}
+                    <option value="{{_id}}">{{title}}</option>
+                  {{/if}}
+                {{/each}}
+              </select>
+          </div>
+          <hr>
+          <div id="summernote">{{{note.content}}}</div>
+          <hr>
+          <strong>Created on:</strong> {{note.date}}
+          {{#if note.update}}
+            <br><strong>Last updated on:</strong> {{note.update}}
+          {{/if}}
+          <hr>
+          <div class="alert alert-success">
+            <a href="#" class="close">&times;</a>
+            The note was updated
+          </div>
+          <button type="button" id="{{note._id}}" class="btn btn-info updateNote">Update note</button>
+        </form>
+
+      </div>
+  </div>
+</template>

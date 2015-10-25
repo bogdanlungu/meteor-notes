@@ -9,7 +9,7 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.2');
   api.use(['mongo','minimongo','mongo-livedata','templating'], ['client','server']);
-  api.use(['sacha:spin','twbs:bootstrap','multiply:iron-router-progress', 'meteorhacks:fast-render', 'peppelg:bootstrap-3-modal'], 'client');
+  api.use(['sacha:spin','twbs:bootstrap','multiply:iron-router-progress', 'meteorhacks:fast-render', 'peppelg:bootstrap-3-modal', 'summernote:summernote'], 'client');
 
   api.use('accounts-password', ['client','server']);
 
@@ -31,10 +31,17 @@ Package.onUse(function(api) {
       'client/includes/not_found.html',
       'client/categories.html',
       'client/categories.js',
+      'client/add_note.html',
+      'client/add_note.js',
+      'client/view_note.html',
+      'client/view_note.js',
+      'client/edit_note.html',
+      'client/edit_note.js',
       'client/config.js'
   ],'client');
 
   api.addAssets(['img/preloader_sm.GIF'], 'client');
 
   api.export('Categories');
+  api.export('Notes');
 });
