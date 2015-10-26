@@ -1,7 +1,10 @@
 <template name="viewNote">
   <div class="row">
       <div class="col-md-12">
-        <h2>{{note.title}}</h2>
+        <h2>
+          {{note.title}}
+          <small>&nbsp; This note contains <strong>{{countWords.wordsCount}}</strong> words on <strong>{{countWords.pages}}</strong> pages</small>
+        </h2>
         <hr>
         {{{note.content}}}
         <hr>

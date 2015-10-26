@@ -20,6 +20,15 @@ Template.editNote.helpers({
     }else{
       return this.note.updated;
     }
+  },
+
+  countWords: function(){
+    var noteDetails = Notes.findOne({_id: Router.current().params._id});
+    if(noteDetails.content){
+      return countTheWords(noteDetails.content);
+    }else{
+      return 0;
+    }
   }
 });
 

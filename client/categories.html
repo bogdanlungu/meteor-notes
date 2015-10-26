@@ -16,7 +16,7 @@
               {{title}}</h2>
               <p class="notes">
                 {{#each notes}}
-                  <a href="{{pathFor 'viewNote'}}">{{title}}</a><br>
+                  <a href="{{pathFor 'viewNote'}}">{{title}}</a> <small><strong>{{details.wordsCount}}</strong> words on <strong>{{details.pages}}</strong> pages</small><br>
                 {{/each}}
               </p>
           {{/each}}

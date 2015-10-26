@@ -1,6 +1,25 @@
+countTheWords = function(string){
+  var contentNoHtml = $(string).text();
+  var obj = {};
+  obj.wordsCount = contentNoHtml.split(" ").length;
+  var pages = obj.wordsCount / 380;
+  pages = parseFloat(pages);
+  obj.pages = pages.toFixed(2);
+  return obj;
+}
+
 Template.viewNote.helpers({
   note: function(){
     return Notes.findOne({_id: Router.current().params._id});
+  },
+
+  countWords: function(){
+    var noteDetails = Notes.findOne({_id: Router.current().params._id});
+    if(noteDetails.content){
+      return countTheWords(noteDetails.content);
+    }else{
+      return 0;
+    }
   }
 });
 

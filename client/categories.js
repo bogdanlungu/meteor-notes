@@ -15,6 +15,15 @@ Template.categories.helpers({
 
   categoryId: function(){
     return this._id;
+  },
+
+  details: function(){
+    var noteDetails = Notes.findOne({_id: this._id});
+    if(noteDetails.content){
+      return countTheWords(noteDetails.content);
+    }else{
+      return 0;
+    }
   }
 });
 
