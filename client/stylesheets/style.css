@@ -21,3 +21,15 @@
 .notes{
   margin-left: 40px;
 }
+
+.autosave{
+  font-size: 0.95em;
+  color: grey;
+  display: none;
+}
+
+.saved{
+  font-size: 0.95em;
+  color: grey;
+  display: none;
+}

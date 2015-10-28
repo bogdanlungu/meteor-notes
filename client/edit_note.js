@@ -83,4 +83,43 @@ Template.editNote.onRendered(function(){
     Session.set("numberOfPages", countTheWords(noteContent).pages);
   }, 500);
 
+  // autosave the note every 3 minutes
+  Meteor.setInterval(function(){
+    var title = $('#title').val();
+    var category = $('#category').val();
+    var noteContent = $('#summernote').code();
+    var error = 0;
+    if(!(title.length > 4)){
+      error = 1;
+    };
+
+    if(category == 0){
+      error = 1;
+    };
+
+    if(noteContent == 0){
+      error = 1;
+    }
+
+    if(error == 0){
+      var note = {};
+      note.title = title;
+      note.category = category;
+      note.content = noteContent;
+      var noteId = Router.current().params._id;
+      Meteor.call("updateNote", noteId, note, function(error, result){
+        if(error){
+          console.log(error);
+        }else{
+          $('.autosave').show(500);
+          Meteor.setTimeout(function(){
+            $('.autosave').hide(500);
+          }, 3000);
+        }
+      });
+    }else{
+      alert("All fields have to be completed!");
+    }
+
+  }, 180000);
 });
