@@ -5,7 +5,7 @@
 
         <form class="form-inline theForm">
           <div class="form-group">
-            <input type="text" class="form-control noteTitle" id="title" value="{{note.title}}" placeholder="Note title"> &nbsp; This note contains <strong>{{countWords.wordsCount}}</strong> words on <strong>{{countWords.pages}}</strong> pages
+            <input type="text" class="form-control noteTitle" id="title" value="{{note.title}}" placeholder="Note title"> &nbsp; This note contains <strong>{{numberOfWords}}</strong> words on <strong>{{numberOfPages}}</strong> pages
           </div>
           <hr>
           <div class="form-group">
@@ -27,6 +27,7 @@
           {{#if note.update}}
             <br><strong>Last updated on:</strong> {{note.update}}
           {{/if}}
+          <br><strong>Note's info:</strong> This note contains <strong>{{numberOfWords}}</strong> words on <strong>{{numberOfPages}}</strong> pages
           <hr>
           <div class="alert alert-success">
             <a href="#" class="close">&times;</a>

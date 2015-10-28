@@ -2,7 +2,7 @@ Meteor.subscribe('categories', 'notes');
 
 Template.categories.helpers({
   categories: function(){
-    return Categories.find({});
+    return Categories.find({}, {sort: {title: 1}});
   },
 
   numberOfCategories: function(){
@@ -10,7 +10,7 @@ Template.categories.helpers({
   },
 
   notes: function(){
-    return Notes.find({category: this._id});
+    return Notes.find({category: this._id}, {sort: {date: 1}});
   },
 
   categoryId: function(){

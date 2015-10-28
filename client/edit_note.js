@@ -22,13 +22,12 @@ Template.editNote.helpers({
     }
   },
 
-  countWords: function(){
-    var noteDetails = Notes.findOne({_id: Router.current().params._id});
-    if(noteDetails.content){
-      return countTheWords(noteDetails.content);
-    }else{
-      return 0;
-    }
+  numberOfWords: function(){
+    return Session.get("numberOfWords");
+  },
+
+  numberOfPages: function(){
+    return Session.get("numberOfPages");
   }
 });
 
@@ -77,4 +76,11 @@ Template.editNote.onRendered(function(){
   $(document).ready(function() {
     $('#summernote').summernote();
   });
+
+  Meteor.setInterval(function(){
+    var noteContent = $('#summernote').code();
+    Session.set("numberOfWords", countTheWords(noteContent).wordsCount);
+    Session.set("numberOfPages", countTheWords(noteContent).pages);
+  }, 500);
+
 });
