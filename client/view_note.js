@@ -2,7 +2,7 @@ countTheWords = function(string){
   var contentNoHtml = $(string).text();
   var obj = {};
   obj.wordsCount = contentNoHtml.split(" ").length;
-  var pages = obj.wordsCount / 380;
+  var pages = obj.wordsCount / 350;
   pages = parseFloat(pages);
   obj.pages = pages.toFixed(2);
   return obj;

@@ -24,6 +24,20 @@ Template.categories.helpers({
     }else{
       return 0;
     }
+  },
+
+  totalNumberOfWords: function(){
+    var allNotes = Notes.find({});
+    var totalWords = 0;
+    var totalPages = 0;
+    allNotes.forEach(function(row){
+      totalWords = totalWords + countTheWords(row.content).wordsCount;
+      totalPages = totalPages + parseFloat(countTheWords(row.content).pages);
+    });
+    var obj = {};
+    obj.totalWords = totalWords;
+    obj.totalPages = totalPages;
+    return obj;
   }
 });
 
