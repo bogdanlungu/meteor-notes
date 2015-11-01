@@ -36,7 +36,7 @@ Template.categories.helpers({
     });
     var obj = {};
     obj.totalWords = totalWords;
-    obj.totalPages = totalPages;
+    obj.totalPages = totalPages.toFixed(2);
     return obj;
   }
 });

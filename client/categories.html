@@ -1,10 +1,12 @@
 <template name="categories">
   <div class="row">
       <div class="col-md-12">
-        <div class="alert alert-info alert-dismissible" role="alert">
-         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          All your notes have <strong>{{totalNumberOfWords.totalWords}}</strong> words on <strong>{{totalNumberOfWords.totalPages}}</strong> pages
-        </div>
+            <input type="text" class="search-input" id="search" placeholder="Search">
+            All your notes have <strong>{{totalNumberOfWords.totalWords}}</strong> words on <strong>{{totalNumberOfWords.totalPages}}</strong> pages
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-12">
         {{#if numberOfCategories}}
           {{#each categories}}
             <h2>

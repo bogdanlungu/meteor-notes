@@ -1,5 +1,5 @@
 .content{
-  padding-top: 60px;
+  padding-top: 70px;
 }
 
 .alert-success{
@@ -32,4 +32,18 @@
   font-size: 0.95em;
   color: grey;
   display: none;
+}
+
+.generalText{
+  margin-top: 15px;
+}
+
+.search-input {
+   width: 100%;
+   margin-bottom: 17px;
+   padding: 15px;
+   background-color: #ECF4F4;
+   border-radius: 2px;
+   border: none;
+   font-size: 1.4em;
 }
