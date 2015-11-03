@@ -4,7 +4,7 @@
 
 Router.configure({
    layoutTemplate: 'layout',
-   loadingTemplate: 'loading',
+   loadingTemplate: '',
    notFoundTemplate: 'notFound',
    progressSpinner: false,
    progressDelay : false

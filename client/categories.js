@@ -10,7 +10,30 @@ Template.categories.helpers({
   },
 
   notes: function(){
-    return Notes.find({category: this._id}, {sort: {date: 1}});
+    if(Session.get("searchKeyword")){
+      var query = RegExp(Session.get("searchKeyword"), 'gi');
+      return Notes.find({$or: [{title: query}, {content: query}], category: this._id}, {sort: {date: 1}});
+    }else{
+      return Notes.find({category: this._id}, {sort: {date: 1}});
+    }
+  },
+
+  searchResults: function(){
+    if(Session.get("searchKeyword")){
+      var query = RegExp(Session.get("searchKeyword"), 'gi');
+      var searchResults = Notes.find({$or: [{title: query}, {content: query}]}, {sort: {date: 1}}).count();
+      switch(searchResults){
+        case 0:
+          return "No results."
+        break;
+        case 1:
+          return "1 result found:";
+        break;
+        default:
+          return searchResults +" results found.";
+        break;
+      }
+    }
   },
 
   categoryId: function(){
@@ -92,6 +115,30 @@ Template.categories.events({
     e.preventDefault();
     var theEditorContent = $('#summernote').code();
     alert(theEditorContent);
+  },
+
+  'keyup #search': function(e){
+    var search = e.currentTarget.value;
+    Meteor.clearTimeout(theSearch);
+    if(search.length > 0){
+      theSearch = Meteor.setTimeout(function(){
+      Session.set("searchKeyword", search);
+      $(".displayCategories").hide();
+      $(".generalInfo").hide();
+      $(".loadingArea").show();
+        Meteor.setTimeout(function(){
+          $(".displayCategories").show();
+          $(".searchResults").show();
+          $(".loadingArea").hide();
+          // display the searching icon
+        }, 900);
+      }, 900);
+    }else{
+       Session.set("searchKeyword", undefined);
+       $(".searchResults").hide();
+       $(".generalInfo").show();
+       $(".loadingArea").hide();
+    }
   }
 });
 

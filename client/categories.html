@@ -2,11 +2,17 @@
   <div class="row">
       <div class="col-md-12">
             <input type="text" class="search-input" id="search" placeholder="Search">
-            All your notes have <strong>{{totalNumberOfWords.totalWords}}</strong> words on <strong>{{totalNumberOfWords.totalPages}}</strong> pages
+            <span class="generalInfo">All your notes have <strong>{{totalNumberOfWords.totalWords}}</strong> words on <strong>{{totalNumberOfWords.totalPages}}</strong> pages</span>
+            <span class="searchResults"><h4>{{searchResults}}</h4></span>
       </div>
   </div>
   <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12 loadingArea">
+        {{> loader}}
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-12 displayCategories">
         {{#if numberOfCategories}}
           {{#each categories}}
             <h2>

@@ -37,7 +37,8 @@ Package.onUse(function(api) {
       'client/view_note.js',
       'client/edit_note.html',
       'client/edit_note.js',
-      'client/config.js'
+      'client/config.js',
+      'client/loader.html'
   ],'client');
 
   api.addAssets(['img/preloader_sm.GIF'], 'client');
