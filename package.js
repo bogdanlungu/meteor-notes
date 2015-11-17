@@ -10,7 +10,7 @@ Package.onUse(function(api) {
   api.versionsFrom('1.1.0.2');
   api.use(['mongo','minimongo','mongo-livedata','templating'], ['client','server']);
   api.use(['sacha:spin','twbs:bootstrap','multiply:iron-router-progress', 'meteorhacks:fast-render', 'peppelg:bootstrap-3-modal', 'summernote:summernote'], 'client');
-
+  api.use(['bogdanlungu:meteor-notes-errors'], 'client');
   api.use('accounts-password', ['client','server']);
 
   api.use(['iron:router'], ['client','server']);
