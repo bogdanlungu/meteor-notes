@@ -139,6 +139,12 @@ Template.categories.events({
        $(".generalInfo").show();
        $(".loadingArea").hide();
     }
+  },
+
+  'click .error': function(e){
+    e.preventDefault();
+    NotesErrors.throwError("Hello World!");
+    // NotesErrors.throwNotification("Hello!");
   }
 });
 
