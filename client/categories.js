@@ -73,21 +73,14 @@ Template.categories.events({
       category.title = categoryName;
       Meteor.call("addCategory", category, function(error, result){
         if(error){
-           alert(error);
-           $('.alert-warning').show("slow");
-           Meteor.setTimeout(function(){
-             $('.alert-warning').hide("slow");
-           }, 4000);
+           NotesErrors.throwError("The category could not be saved!");
         }else{
-           $('.alert-success').show("slow");
+           NotesErrors.throwNotification("The category was saved!");
            $('#category').val("");
-           Meteor.setTimeout(function(){
-             $('.alert-success').hide("slow");
-           }, 4000);
         }
       });
     }else{
-      alert("Please add a category name!");
+      NotesErrors.throwError("Please add a category name!");
     }
   },
 
@@ -139,12 +132,6 @@ Template.categories.events({
        $(".generalInfo").show();
        $(".loadingArea").hide();
     }
-  },
-
-  'click .error': function(e){
-    e.preventDefault();
-    NotesErrors.throwError("Hello World!");
-    // NotesErrors.throwNotification("Hello!");
   }
 });
 
@@ -172,13 +159,13 @@ Template.deleteCategory.events({
       var theCategoryId = Session.get("categoryId");
       Meteor.call("removeCategory", theCategoryId, function(error, result){
         if(error){
-          alert(error);
+          NotesErrors.throwError(error);
         }else{
           // the category will dissapear
         }
       });
     }else{
-      alert("Error");
+      NotesErrors.throwError("Error!");
     }
   }
 });
@@ -188,6 +175,7 @@ Template.editCategory.helpers({
     if(Session.get("categoryId")){
       return Categories.findOne({_id: Session.get("categoryId")});
     }else{
+      NotesErrors.throwError("Error!");
       return "Error!";
     }
   }
@@ -201,7 +189,7 @@ Template.editCategory.events({
     category.title = $('#title').val();
     Meteor.call("editCategory", categoryId, category, function(error, result){
       if(error){
-        alert(error);
+        NotesErrors.throwError(error);
       }else{
         // the category will change its title
       }
