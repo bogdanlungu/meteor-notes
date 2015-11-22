@@ -2,8 +2,12 @@
   <div class="row">
       <div class="col-md-12">
             <input type="text" class="search-input" id="search" placeholder="Search">
-            <span class="generalInfo">All your notes have <strong>{{totalNumberOfWords.totalWords}}</strong> words on <strong>{{totalNumberOfWords.totalPages}}</strong> pages</span>
-            <span class="searchResults"><h4>{{searchResults}}</h4></span>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <span class="generalInfo">All your notes have <strong>{{totalNumberOfWords.totalWords}}</strong> words on <strong>{{totalNumberOfWords.totalPages}}</strong> pages</span>
+                <span class="searchResults"><h4>{{searchResults}}</h4></span>
+              </div>
+            </div>
       </div>
   </div>
   <div class="row">
@@ -13,25 +17,29 @@
   </div>
   <div class="row">
       <div class="col-md-12 displayCategories">
-        <button class="error">Test</button>
         {{#if numberOfCategories}}
           {{#each categories}}
-            <h2>
-              <div class="btn-group" role="group">
-               <button type="button" class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 <span class="caret"></span>
-               </button>
-               <ul class="dropdown-menu">
-                <li><a href="#" class="edit" id="{{_id}}">Edit</a></li>
-                <li><a href="#" class="delete" id="{{_id}}">Delete</a></li>
-               </ul>
-              </div>
-              {{title}}</h2>
+          <div class="panel panel-default">
+           <div class="panel-heading">
+            <h4>{{title}}</h4>
+            <div class="btn-group toRight" role="group">
+             <button type="button" class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <span class="caret"></span>
+             </button>
+             <ul class="dropdown-menu">
+              <li><a href="#" class="edit" id="{{_id}}">Edit</a></li>
+              <li><a href="#" class="delete" id="{{_id}}">Delete</a></li>
+             </ul>
+            </div>
+            </div>
+            <div class="panel-body">
               <p class="notes">
                 {{#each notes}}
                   <a href="{{pathFor 'viewNote'}}">{{title}}</a> <small><strong>{{details.wordsCount}}</strong> words on <strong>{{details.pages}}</strong> pages</small><br>
                 {{/each}}
               </p>
+            </div>
+          </div>
           {{/each}}
         {{else}}
           <h2>Sorry, there are no categories saved.</h2>
