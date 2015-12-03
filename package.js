@@ -11,6 +11,7 @@ Package.onUse(function(api) {
   api.use(['mongo','minimongo','mongo-livedata','templating'], ['client','server']);
   api.use(['sacha:spin','twbs:bootstrap','multiply:iron-router-progress', 'meteorhacks:fast-render', 'peppelg:bootstrap-3-modal', 'summernote:summernote'], 'client');
   api.use(['bogdanlungu:meteor-notes-errors'], 'client');
+  api.use('bogdanlungu:meteor-notes-contributions', ['client', 'server']);
   api.use('accounts-password', ['client','server']);
 
   api.use(['iron:router'], ['client','server']);

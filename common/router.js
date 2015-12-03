@@ -11,7 +11,7 @@ Router.configure({
 });
 
 Router.configure({
-    waitOn: function() { return [Meteor.subscribe('categories'), Meteor.subscribe('notes')]; }
+    waitOn: function() { return [Meteor.subscribe('categories'), Meteor.subscribe('notes'), Meteor.subscribe('logs')]; }
 })
 
 Router.route('/', {name: 'welcome'});

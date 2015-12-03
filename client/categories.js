@@ -1,4 +1,4 @@
-Meteor.subscribe('categories', 'notes');
+Meteor.subscribe('categories', 'notes', 'logs');
 
 Template.categories.helpers({
   categories: function(){

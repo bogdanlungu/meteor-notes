@@ -63,6 +63,11 @@ function save(){
   var title = $('#title').val();
   var category = $('#category').val();
   var noteContent = $('#summernote').code();
+
+  var noteId = Router.current().params._id;
+  var contentNoHtml = $(noteContent).text();
+  Contributions.add(noteId, contentNoHtml);
+
   var error = 0;
   if(!(title.length > 4)){
     error = 1;
@@ -92,6 +97,7 @@ function save(){
         }, 3000);
       }
     });
+
   }else{
     alert("All fields have to be completed!");
   }
