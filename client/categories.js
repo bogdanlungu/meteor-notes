@@ -119,18 +119,21 @@ Template.categories.events({
       $(".displayCategories").hide();
       $(".generalInfo").hide();
       $(".loadingArea").show();
+      $(".panelCalendar").hide();
         Meteor.setTimeout(function(){
           $(".displayCategories").show();
           $(".searchResults").show();
           $(".loadingArea").hide();
+          $(".panelCalendar").hide();
           // display the searching icon
         }, 900);
       }, 900);
     }else{
-       Session.set("searchKeyword", undefined);
+       Session.set("searchKeyword", undefined || null);
        $(".searchResults").hide();
        $(".generalInfo").show();
        $(".loadingArea").hide();
+       $(".panelCalendar").show();
     }
   }
 });

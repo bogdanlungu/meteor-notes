@@ -4,17 +4,26 @@
             <input type="text" class="search-input" id="search" placeholder="Search">
             <div class="panel panel-default">
               <div class="panel-body">
-                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> &nbsp;<span class="generalInfo">All your notes have <strong>{{totalNumberOfWords.totalWords}}</strong> words on <strong>{{totalNumberOfWords.totalPages}}</strong> pages</span>
+                <span class="glyphicon glyphicon-info-sign generalInfo" aria-hidden="true"></span> <span class="generalInfo">All your notes have <strong>{{totalNumberOfWords.totalWords}}</strong> words on <strong>{{totalNumberOfWords.totalPages}}</strong> pages</span>
                 <span class="searchResults"><h4>{{searchResults}}</h4></span>
               </div>
             </div>
       </div>
   </div>
+    <div class="panel panel-default panelCalendar">
+     <div class="panel-heading">
+       <h4>Daily contributions to your notes</h4>
+     </div>
+     <div class="panel-body">
+       {{> calendar}}
+     </div>
+   </div>
   <div class="row">
       <div class="col-md-12 loadingArea">
         {{> loader}}
       </div>
   </div>
+
   <div class="row">
       <div class="col-md-12 displayCategories">
         {{#if numberOfCategories}}
