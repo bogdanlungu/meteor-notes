@@ -42,7 +42,7 @@ Package.onUse(function(api) {
       'client/loader.html'
   ],'client');
 
-  api.addAssets(['img/preloader_sm.GIF'], 'client');
+  api.addAssets(['img/preloader_sm.GIF', 'img/meteorNotes.jpg'], 'client');
 
   api.export('Categories');
   api.export('Notes');
