@@ -1,9 +1,13 @@
 body{
- font-family: 'Playfair Display', serif;
+ font-family: 'Lato', sans-serif;
+ font-weight: 300;
+ background-color: #efebe3;
 }
 
 .content{
-  padding-top: 70px;
+  padding-top: 15px;
+  background-color: #fff;
+  margin-top: 70px;
 }
 
 .theForm{
@@ -15,7 +19,7 @@ body{
 }
 
 .notes{
-  margin-left: 40px;
+  margin-left: 0px;
 }
 
 .autosave{
@@ -74,4 +78,18 @@ body{
 .toRight{
   float: right;
   margin-top: -34px;
+}
+
+.navbar-inverse{
+ background-color: #38342b;
+}
+
+.panel-heading h4{
+  font-size: 1.4em;
+  font-weight: 300;
+}
+
+.panel-heading {
+  background-color: #dfd9cb;
+  color: red;
 }
