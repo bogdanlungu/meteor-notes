@@ -1,13 +1,14 @@
 body{
  font-family: 'Lato', sans-serif;
  font-weight: 300;
- background-color: #efebe3;
+ background-color: #323a45;
 }
 
 .content{
   padding-top: 15px;
   background-color: #fff;
   margin-top: 70px;
+  margin-bottom: 20px;
 }
 
 .theForm{

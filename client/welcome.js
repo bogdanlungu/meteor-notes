@@ -7,3 +7,7 @@ Template.welcome.helpers({
 Template.layout.helpers({
 
 });
+
+Template.welcome.onRendered(function(){
+  new WOW().init();
+});
