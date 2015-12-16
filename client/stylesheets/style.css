@@ -94,3 +94,28 @@ body{
   background-color: #dfd9cb;
   color: red;
 }
+
+.main-feature{
+  padding-bottom: 30px;
+}
+
+.home-presentation{
+  width: 100%;
+  max-width: 350px;
+  border: solid 1px #38342b;
+  border-radius: 7px;
+}
+
+.meteorNotes-is-responsive{
+  width: 100%;
+  max-width: 555px;
+}
+
+.feature{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.oddRow{
+  background-color: #dfd9cb;
+}

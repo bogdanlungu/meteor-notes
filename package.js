@@ -42,7 +42,14 @@ Package.onUse(function(api) {
       'client/loader.html'
   ],'client');
 
-  api.addAssets(['img/preloader_sm.GIF', 'img/meteorNotes-responsive.png'], 'client');
+  api.addAssets(['img/preloader_sm.GIF',
+  'img/meteorNotes-is-responsive.png',
+  'img/create-account-2.png',
+  'img/create-categories-2.png',
+  'img/add-note.png',
+  'img/track-contributions.png'
+  ],
+  'client');
 
   api.export('Categories');
   api.export('Notes');
