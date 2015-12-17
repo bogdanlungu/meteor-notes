@@ -1,11 +1,11 @@
 <template name="categories">
   <div class="row">
       <div class="col-md-12">
-            <input type="text" class="search-input" id="search" placeholder="Search">
+            <input type="text" class="search-input" id="search" value="{{searchKeyword}}" placeholder="Search">
             <div class="panel panel-default">
               <div class="panel-body">
                 <span class="glyphicon glyphicon-info-sign generalInfo" aria-hidden="true"></span> <span class="generalInfo">All your notes have <strong>{{totalNumberOfWords.totalWords}}</strong> words on <strong>{{totalNumberOfWords.totalPages}}</strong> pages</span>
-                <span class="searchResults"><h4>{{searchResults}}</h4></span>
+                <span class="searchResults"><h4>{{searchResults}}</h4> <button type="button" class="btn btn-info btn-xs clearSearch">Clear the search</button></span>
               </div>
             </div>
       </div>
@@ -43,9 +43,13 @@
             </div>
             <div class="panel-body">
               <p class="notes">
-                {{#each notes}}
-                  <a href="{{pathFor 'viewNote'}}">{{title}}</a> <small><strong>{{details.wordsCount}}</strong> words on <strong>{{details.pages}}</strong> pages</small><br>
-                {{/each}}
+                {{#if checkIfResults}}
+                  {{#each notes}}
+                    <a href="{{pathFor 'viewNote'}}">{{title}}</a> <small><strong>{{details.wordsCount}}</strong> words on <strong>{{details.pages}}</strong> pages</small><br>
+                  {{/each}}
+                {{else}}
+                  <p>No notes.</p>
+                {{/if}}
               </p>
             </div>
           </div>

@@ -9,6 +9,15 @@ Template.categories.helpers({
     return Categories.find({}).count();
   },
 
+  checkIfResults: function(){
+    if(Session.get("searchKeyword")){
+      var query = RegExp(Session.get("searchKeyword"), 'gi');
+      return Notes.find({$or: [{title: query}, {content: query}], category: this._id}, {sort: {date: 1}}).count();
+    }else{
+      return Notes.find({category: this._id}, {sort: {date: 1}}).count();
+    }
+  },
+
   notes: function(){
     if(Session.get("searchKeyword")){
       var query = RegExp(Session.get("searchKeyword"), 'gi');
@@ -61,6 +70,10 @@ Template.categories.helpers({
     obj.totalWords = totalWords;
     obj.totalPages = totalPages.toFixed(2);
     return obj;
+  },
+
+  searchKeyword: function(){
+    return Session.get("searchKeyword");
   }
 });
 
@@ -135,6 +148,16 @@ Template.categories.events({
        $(".loadingArea").hide();
        $(".panelCalendar").show();
     }
+  },
+
+  'click .clearSearch': function(e){
+    e.preventDefault();
+    Session.set("searchKeyword", "");
+    
+    $(".searchResults").hide();
+    $(".generalInfo").show();
+    $(".loadingArea").hide();
+    $(".panelCalendar").show();
   }
 });
 
@@ -142,6 +165,27 @@ Template.categories.onRendered(function(){
   $(document).ready(function() {
     $('#summernote').summernote();
   });
+
+  var search = Session.get("searchKeyword");
+  if(search.length > 0){
+    $(".displayCategories").hide();
+    $(".generalInfo").hide();
+    $(".loadingArea").show();
+    $(".panelCalendar").hide();
+      Meteor.setTimeout(function(){
+        $(".displayCategories").show();
+        $(".searchResults").show();
+        $(".loadingArea").hide();
+        $(".panelCalendar").hide();
+        // display the searching icon
+      }, 900);
+  }else{
+     $(".searchResults").hide();
+     $(".generalInfo").show();
+     $(".loadingArea").hide();
+     $(".panelCalendar").show();
+  }
+
 });
 
 Template.deleteCategory.helpers({
