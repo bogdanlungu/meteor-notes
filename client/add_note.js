@@ -35,6 +35,8 @@ Template.addNote.events({
           // alert("The note was saved in the database");
           var theId = result;
           Router.go('editNote', {_id: theId});
+          var contentNoHtml = $(noteContent).text();
+          Contributions.addFirstLog(theId, contentNoHtml);
         }
       });
     }else{

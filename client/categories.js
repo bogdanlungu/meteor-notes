@@ -153,7 +153,7 @@ Template.categories.events({
   'click .clearSearch': function(e){
     e.preventDefault();
     Session.set("searchKeyword", "");
-    
+
     $(".searchResults").hide();
     $(".generalInfo").show();
     $(".loadingArea").hide();
@@ -167,6 +167,7 @@ Template.categories.onRendered(function(){
   });
 
   var search = Session.get("searchKeyword");
+  if(search){
   if(search.length > 0){
     $(".displayCategories").hide();
     $(".generalInfo").hide();
@@ -185,7 +186,7 @@ Template.categories.onRendered(function(){
      $(".loadingArea").hide();
      $(".panelCalendar").show();
   }
-
+}
 });
 
 Template.deleteCategory.helpers({
