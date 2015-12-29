@@ -2,7 +2,6 @@
   <div class="row">
       <div class="col-md-12">
         <h2>Edit note</h2>
-
         <form class="form-inline theForm">
           <div class="form-group">
             <input type="text" class="form-control noteTitle" id="title" value="{{note.title}}" placeholder="Note title"> &nbsp; This note contains <strong>{{numberOfWords}}</strong> words on <strong>{{numberOfPages}}</strong> pages
@@ -33,6 +32,15 @@
           <span class="autosave"> &nbsp; &nbsp;<img src="/packages/bogdanlungu_meteor-notes/img/preloader_sm.GIF"> Saving the note</span>
           <span class="saved"> &nbsp; &nbsp;The note was saved</span>
         </form>
+
+        <div class="panel panel-default panelCalendar">
+         <div class="panel-heading">
+           <h4>Daily contributions</h4>
+         </div>
+         <div class="panel-body">
+           {{> noteContributions}}
+         </div>
+       </div>
 
       </div>
   </div>

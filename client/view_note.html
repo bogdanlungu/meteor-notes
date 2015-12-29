@@ -16,6 +16,12 @@
         <hr>
         {{{note.content}}}
         <hr>
+        <strong>Created on:</strong> {{note.date}}
+        {{#if note.update}}
+          <br><strong>Last updated on:</strong> {{note.update}}
+        {{/if}}
+        <br><strong>Note's info:</strong> This note contains <strong>{{countWords.wordsCount}}</strong> words on <strong>{{countWords.pages}}</strong> pages
+        <hr>
         <button type="button" id="{{note._id}}" class="btn btn-success editNote">Edit note</button>
         <button type="button" id="{{note._id}}" class="btn btn-danger deleteNote">Delete note</button>
       </div>
