@@ -44,8 +44,11 @@ Package.onUse(function(api) {
 
   api.addAssets(['img/preloader_sm.GIF',
   'img/meteorNotes-is-responsive.png',
+  'img/meteorNotes-responsive.png',
   'img/create-account-2.png',
+  'img/create-account.png',
   'img/create-categories-2.png',
+  'img/create-categories.png',
   'img/add-note.png',
   'img/track-contributions.png'
   ],
