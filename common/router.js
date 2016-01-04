@@ -54,3 +54,4 @@ Router.route('/categories', {name: 'categories'});
 Router.route('/add-note', {name: 'addNote'});
 Router.route('/view-note/:_id', {name: 'viewNote'});
 Router.route('/edit-note/:_id', {name: 'editNote'});
+Router.route('/help', {name: 'help'});

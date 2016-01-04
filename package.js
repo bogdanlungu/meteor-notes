@@ -17,7 +17,7 @@ Package.onUse(function(api) {
   api.use(['iron:router'], ['client','server']);
   api.imply('iron:controller', ['client','server']);
 
-  api.use('ian:accounts-ui-bootstrap-3@1.2.59', ['client','server']);
+  api.use(['ian:accounts-ui-bootstrap-3@1.2.59', 'okgrow:analytics@1.0.4'], ['client','server']);
 
   api.addFiles(['common/router.js', 'collections/notes_collections.js', 'server/publications.js', 'server/permissions.js'],['client','server']);
 
@@ -39,13 +39,16 @@ Package.onUse(function(api) {
       'client/edit_note.html',
       'client/edit_note.js',
       'client/config.js',
-      'client/loader.html'
+      'client/loader.html',
+      'client/help.html',
+      'client/help.js'
   ],'client');
 
   api.addAssets(['img/preloader_sm.GIF',
   'img/meteorNotes-is-responsive.png',
   'img/meteorNotes-responsive.png',
   'img/create-account-1x.png',
+  'img/create-account-2.png',
   'img/create-categories-1x.png',
   'img/edit-delete-content-1x.png',
   'img/edit-delete-content-2x.png',
