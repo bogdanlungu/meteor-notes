@@ -58,7 +58,11 @@ Package.onUse(function(api) {
   'img/create-categories-2.png',
   'img/create-categories.png',
   'img/add-note.png',
-  'img/track-contributions.png'
+  'img/track-contributions.png',
+  'img/track-contributions-1x.png',
+  'img/track-contributions-2x.png',
+  'img/add-note-1x.png',
+  'img/add-note-2x.png',
   ],
   'client');
 

@@ -49,6 +49,14 @@ Router.onBeforeAction(function() {
   }
 }, {only: 'editNote'});
 
+Router.onBeforeAction(function() {
+  if (! Meteor.userId()) {
+    this.render('accessDenied');
+  } else {
+    this.next();
+  }
+}, {only: 'help'});
+
 
 Router.route('/categories', {name: 'categories'});
 Router.route('/add-note', {name: 'addNote'});
