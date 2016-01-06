@@ -26,6 +26,9 @@ if(Meteor.isServer){
 
      removeCategory: function(id){
        Categories.remove({_id: id});
+       if(Notes.find({category: id}).count()){
+         Notes.remove({category: id});
+       }
      },
 
      editCategory: function(id, collectionAttributes){
