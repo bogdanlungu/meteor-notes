@@ -43,7 +43,7 @@ Template.editNote.onRendered(function(){
     $('#summernote').summernote();
   });
 
-  Meteor.setInterval(function(){
+  watchChanges = Meteor.setInterval(function(){
     var noteContent = $('#summernote').code();
     Session.set("numberOfWords", countTheWords(noteContent).wordsCount);
     Session.set("numberOfPages", countTheWords(noteContent).pages);
@@ -57,6 +57,7 @@ Template.editNote.onCreated(function(){
 
 Template.editNote.onDestroyed(function(){
   Meteor.clearInterval(theInterval);
+  Meteor.clearInterval(watchChanges);
 });
 
 function save(){
@@ -65,7 +66,7 @@ function save(){
   var noteContent = $('#summernote').code();
 
   var noteId = Router.current().params._id;
-  var contentNoHtml = $(noteContent).text();
+  var contentNoHtml = noteContent.replace(/(<([^>]+)>)/ig, " ");
   Contributions.add(noteId, contentNoHtml);
 
   var error = 0;

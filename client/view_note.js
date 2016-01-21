@@ -1,11 +1,15 @@
 countTheWords = function(string){
-  var contentNoHtml = $(string).text();
+  // Check if the string has tags in it
+  // Fixed also the bug when the user was deleting all the tags from the editor -> view source
+  if(string){
+  var str = string.replace(/(<([^>]+)>)/ig, " ");
   var obj = {};
-  obj.wordsCount = contentNoHtml.split(" ").length;
+  obj.wordsCount = Contributions.countWords(str);
   var pages = obj.wordsCount / 350;
   pages = parseFloat(pages);
   obj.pages = pages.toFixed(2);
   return obj;
+  }
 }
 
 Template.viewNote.helpers({
