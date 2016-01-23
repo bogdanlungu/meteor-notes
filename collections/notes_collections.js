@@ -45,6 +45,7 @@ if(Meteor.isServer){
 
      removeNote: function(id){
        Notes.remove({_id: id});
+       Logs.remove({noteId: id}); 
      },
 
      updateNote: function(id, collectionAttributes){
