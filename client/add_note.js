@@ -30,7 +30,7 @@ Template.addNote.events({
       note.content = noteContent;
       Meteor.call("addNote", note, function(error, result){
         if(error){
-          alert(error);
+          NotesErrors.throwError(error);
         }else{
           // alert("The note was saved in the database");
           var theId = result;
@@ -40,7 +40,7 @@ Template.addNote.events({
         }
       });
     }else{
-      alert("Please complete all the fields!");
+      NotesErrors.throwError("Please complete all the fields!");
     }
   }
 });

@@ -100,6 +100,6 @@ function save(){
     });
 
   }else{
-    alert("All fields have to be completed!");
+    NotesErrors.throwError("All fields have to be completed!");
   }
 }

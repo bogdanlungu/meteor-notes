@@ -55,7 +55,7 @@ Template.deleteNote.events({
     e.preventDefault();
     Meteor.call("removeNote", Session.get("noteId"), function(error, result){
       if(error){
-        alert(error);
+        NotesErrors.throwError(error);
       }else{
         Modal.hide();
         Router.go('/categories');
