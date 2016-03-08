@@ -58,6 +58,23 @@ Template.categories.helpers({
     }
   },
 
+  lastUpdate: function(){
+    var logDetails = Logs.findOne({noteId: this._id}, {$sort: {"date": -1}}, {limit: 1});
+    if(logDetails){
+      if(logDetails.date){
+       var month = logDetails.date.getUTCMonth() + 1;
+       var day = logDetails.date.getUTCDate();
+       var year = logDetails.date.getUTCFullYear();
+       var theDate = month + "/" + day + "/" + year;
+       return theDate;
+     }else{
+       return "n/a";
+     }
+    }else{
+      return "n/a";
+    }
+  },
+
   totalNumberOfWords: function(){
     var allNotes = Notes.find({});
     var totalWords = 0;

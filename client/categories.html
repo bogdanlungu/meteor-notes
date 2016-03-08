@@ -45,7 +45,7 @@
               <p class="notes">
                 {{#if checkIfResults}}
                   {{#each notes}}
-                    <a href="{{pathFor 'viewNote'}}">{{title}}</a> <small><strong>{{details.wordsCount}}</strong> words on <strong>{{details.pages}}</strong> pages</small><br>
+                    <a href="{{pathFor 'viewNote'}}">{{title}}</a> <small><strong>{{details.wordsCount}}</strong> words on <strong>{{details.pages}}</strong> pages (last updated: {{lastUpdate}})</small><br>
                   {{/each}}
                 {{else}}
                   <p>No notes.</p>
