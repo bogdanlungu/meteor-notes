@@ -14,7 +14,15 @@ countTheWords = function(string){
 
 Template.viewNote.helpers({
   note: function(){
-    return Notes.findOne({_id: Router.current().params._id});
+    var note = Notes.findOne({_id: Router.current().params._id});
+    var searchKeyword = Session.get("searchKeyword");
+    if(searchKeyword){
+      var content = note.content;
+      content = content.replace(searchKeyword, "<span style='color: red'><strong>"+searchKeyword+"</strong></span>");
+      note.content = content;
+      return note;
+    }
+    return note;
   },
 
   countWords: function(){
