@@ -18,7 +18,7 @@ Template.viewNote.helpers({
     var searchKeyword = Session.get("searchKeyword");
     if(searchKeyword){
       var content = note.content;
-      content = content.replace(searchKeyword, "<span style='color: red'><strong>"+searchKeyword+"</strong></span>");
+      content = content.replace(searchKeyword, "<span class='highlight-search'><strong>"+searchKeyword+"</strong></span>");
       note.content = content;
       return note;
     }

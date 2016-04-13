@@ -166,3 +166,8 @@ h2 {
   -moz-transition: opacity .3s 0s, visibility 0s .3s;
   transition: opacity .3s 0s, visibility 0s .3s;
 }
+
+.highlight-search{
+  color: red;
+  background: yellow;
+}
