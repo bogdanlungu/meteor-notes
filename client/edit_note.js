@@ -70,7 +70,7 @@ function save(){
   Contributions.add(noteId, contentNoHtml);
 
   var error = 0;
-  if(!(title.length > 4)){
+  if((title.length < 4)){
     error = 1;
   };
 
@@ -87,7 +87,6 @@ function save(){
     note.title = title;
     note.category = category;
     note.content = noteContent;
-    var noteId = Router.current().params._id;
     Meteor.call("updateNote", noteId, note, function(error, result){
       if(error){
         console.log(error);

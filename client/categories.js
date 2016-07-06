@@ -33,14 +33,11 @@ Template.categories.helpers({
       var searchResults = Notes.find({$or: [{title: query}, {content: query}]}, {sort: {date: 1}}).count();
       switch(searchResults){
         case 0:
-          return "No results."
-        break;
+          return "No results.";
         case 1:
           return "1 result found:";
-        break;
         default:
           return searchResults +" results found.";
-        break;
       }
     }
   },
