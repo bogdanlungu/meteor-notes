@@ -1,70 +1,70 @@
-countTheWords = function(string){
+countTheWords = function (string) {
   // Check if the string has tags in it
   // Fixed also the bug when the user was deleting all the tags from the editor -> view source
-  if(string){
-  var str = string.replace(/(<([^>]+)>)/ig, " ");
-  var obj = {};
-  obj.wordsCount = Contributions.countWords(str);
-  var pages = obj.wordsCount / 350;
-  pages = parseFloat(pages);
-  obj.pages = pages.toFixed(2);
-  return obj;
+  if (string) {
+    var str = string.replace(/(<([^>]+)>)/ig, " ");
+    var obj = {};
+    obj.wordsCount = Contributions.countWords(str);
+    var pages = obj.wordsCount / 350;
+    pages = parseFloat(pages);
+    obj.pages = pages.toFixed(2);
+    return obj;
   }
 }
 
 Template.viewNote.helpers({
-  note: function(){
-    var note = Notes.findOne({_id: Router.current().params._id});
+  note: function () {
+    var note = Notes.findOne({ _id: Router.current().params._id });
     var searchKeyword = Session.get("searchKeyword");
-    if(searchKeyword){
+    if (searchKeyword) {
       var content = note.content;
-      content = content.replace(searchKeyword, "<span class='highlight-search'><strong>"+searchKeyword+"</strong></span>");
+      content = content.replace(searchKeyword, "<span class='highlight-search'><strong>" + searchKeyword + "</strong></span>");
       note.content = content;
       return note;
     }
     return note;
   },
 
-  countWords: function(){
-    var noteDetails = Notes.findOne({_id: Router.current().params._id});
-    if(noteDetails.content){
+  countWords: function () {
+    var noteDetails = Notes.findOne({ _id: Router.current().params._id });
+    if (noteDetails.content) {
       return countTheWords(noteDetails.content);
-    }else{
+    } else {
       return 0;
     }
   }
 });
 
 Template.viewNote.events({
-  'click .deleteNote': function(e){
+  'click .deleteNote': function (e) {
     e.preventDefault();
     var noteId = e.currentTarget.id;
     Session.set("noteId", noteId);
     Modal.show('deleteNote');
   },
 
-  'click .editNote': function(e){
+  'click .editNote': function (e) {
     e.preventDefault();
     var noteId = e.currentTarget.id;
-    Router.go('/edit-note/'+noteId);
+    Router.go('/edit-note/' + noteId);
   }
 });
 
 Template.deleteNote.helpers({
-  note: function(){
-    if(Session.get("noteId")){
-      return Notes.findOne({_id: Session.get("noteId")});
+  note: function () {
+    if (Session.get("noteId")) {
+      return Notes.findOne({ _id: Session.get("noteId") });
     }
   }
 });
 
 Template.deleteNote.events({
-  'click .deleteConfirm': function(e){
+  'click .deleteConfirm': function (e) {
     e.preventDefault();
-    Meteor.call("removeNote", Session.get("noteId"), function(error, result){
-      if(error){
+    Meteor.call("removeNote", Session.get("noteId"), function (error, result) {
+      if (error) {
         NotesErrors.throwError(error);
-      }else{
+      } else {
         Modal.hide();
         Router.go('/categories');
       }
